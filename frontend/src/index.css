@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  /* App background (outer layout) */
+  --bg: #d0f6e3;
+
+  /* Surfaces: cards, modals, panels */
+  --surface: #ffffff;
+
+  /* Primary action color (CTAs) */
+  --primary: #4eb7b3;
+
+  /* Hover / active feedback */
+  --primary-hover: #6dd5c7;
+
+  /* Accents: highlights, tags, blocks */
+  --accent: #98e1d7;
+
+  /* Main readable text */
+  --text-main: #3b8ea0;
+
+  /* Secondary / low-priority text */
+  --text-muted: #4eb7b3;
+
+  /* Soft separators and outlines */
+  --border: #98e1d7;
+
+  /* Consistent rounding across UI */
+  --radius: 0.75rem;
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* Layout backgrounds */
+  .app-bg {
+    background-color: var(--bg);
+  }
+
+  .surface-bg {
+    background-color: var(--surface);
+  }
+
+  /* Text roles */
+  .text-main {
+    color: var(--text-main);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  /* Structural borders */
+  .border-soft {
+    border: 1px solid var(--border);
+  }
+
+  /* Button foundation */
+  .btn {
+    @apply inline-flex items-center justify-center
+         px-4 py-2
+         font-medium
+         rounded-xl
+         transition-all duration-200
+         select-none;
+  }
+
+  /* Primary action button */
+  .btn-primary {
+    @apply text-white
+         shadow-sm
+         hover:shadow-md
+         active:scale-[0.97]
+         focus:outline-none
+         focus:ring-2 focus:ring-offset-2;
+  }
+
+  /* Color handled via CSS variables */
+  .btn-primary {
+    background-color: var(--primary);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-hover);
+  }
+
+  /* Card container */
+  .card {
+    background-color: var(--surface);
+    border-radius: var(--radius);
+    @apply p-6 shadow-sm;
+  }
+
+  .card-muted {
+    @apply bg-white/80;
+  }
+
+  .card-primary {
+    @apply shadow-md;
+  }
+}
+
+@layer utilities {
+  /* Fade + slide up on mount */
+  .animate-in {
+    animation: fadeUp 0.4s ease-out both;
+  }
+
+  .animate-in-slow {
+    animation: fadeUp 0.6s ease-out both;
+  }
+
+  /* Stagger helpers */
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  /* Hover lift */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
